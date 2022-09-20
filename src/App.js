@@ -3,80 +3,79 @@ import './App.css';
 import axios from 'axios';
 import React, { useEffect } from "react";
 
-// FETCH data from API by wrapping GET method in ASYNC/AWAIT function
-useEffect(() => {
-	const getQuote = async () => {
-		try {
-			const response = await axios.get('https://animechan.vercel.app/api/random');
-			console.log(response);
-			const randomQuote = response.data;
-			setQuote(randomQuote);
-		} catch (error) {
-			console.log(error);
-		}
-	};
-	getQuote();	
-}, []);
+// USE 'npm start' TO LOAD REACT PAGE
 
-// POST data from API by wrapping POST method inusing ASYNC/AWAIT function
-useEffect(() => {
-	const post = async () => {
-		const data = {
-			quote: 'This quote is made by',
-			character: 'this character',
-			anime: 'from this anime'
-		};
-		try {
-			const response = await axios.post('https://animechan.vercel.app/api/random',data);
-			console.log(response);
-		} catch (error) {
-			console.log(error);
-		}
-	};
-	post();
-}, []);
+class App extends React.Component {
+	state = {
+		quote: '',
+	}
+
+	componentDidMount() {
+		this.fetchQuote();
+	}
+
+	fetchQuote = () => {
+		axios.get('https://animechan.vercel.app/api/random')
+			.then((response) => {
+				const {quote} = response;
+				console.log(response.data);
+				this.setState({quote});
+			})
+			.catch((error) => {
+				console.lot(error);
+			});
+	}
+
+	render() {
+		return (
+			<div className="App">
+				<div className="Card">
+					<h1 className='Heading'>{this.state.quote}</h1>
+					<button className="Button" onClick={this.fetchQuote}>
+						<span>Random Quote</span>
+					</button>
+				</div>
+			</div>
+		);
+	}
+}
+
+export default App;
 
 
-
-
-
-
-// 	// API fetch via Axios with Get method
-// const [quote, setQuote] = useState([]);
-// const getQuote = () => {
-// 	axios.get('https://animechan.vercel.app/api/random')
-// 		.then((response) => {
+// FETCH DATA FROM API BY WRAPPING GET METHOD IN ASYNC/AWAIT FUNCTION
+// useEffect(() => {
+// 	const getQuote = async () => {
+// 		try {
+// 			const response = await axios.get('https://animechan.vercel.app/api/random');
 // 			console.log(response);
-// 			// Store fetch data in variable
-// 			const randoQuote = response.data;
-// 			setQuote(randoQuote);
-// 		});
-// };
-// // Pass fetched data to state
-// useEffect(() => getQuote(), []);
+// 			const randomQuote = response.data;
+// 			setQuote(randomQuote);
+// 		} catch (error) {
+// 			console.log(error);
+// 		}
+// 	};
+// 	getQuote();	
+// }, []);
 
-
-
-// // DEFAULT REACT FUNCTION
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
+// POST DATA FROM API BY WRAPPING POST METHOD IN ASYNC/AWAIT FUNCTION
+// useEffect(() => {
+// 	const post = async () => {
+// 		const randomQuote = {
+// 			quote: 'This quote is made by',
+// 			character: 'this character',
+// 			anime: 'from this anime'
+// 		};
+// 		try {
+// 			const response = await axios.post('https://animechan.vercel.app/api/random',randomQuote);
+// 			console.log(response);
+// 		} catch (error) {
+// 			console.log(error);
+// 		}
+// 	};
+// 	post();
+// }, []);
+// // FORMAT FOR QUOTE DATA
+// function formatQuote(randomQuote) {
+// 	return randomQuote.quote 
 // }
-
-// export default App;
