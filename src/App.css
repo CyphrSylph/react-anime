@@ -6,55 +6,55 @@
 }
 
 .App {
-  height: 100%;
-  background: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url('./img/crumpled-paper.webp');
-  background-size: cover;
-  background-position: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-}
-
-.Heading {
-  display: flex;
-  align-items: center;
-  height: 582px;
+  height: 100vh;
+  background-image: url('./img/ep_naturalwhite.webp');
+  background-repeat: repeat;
+  background-position: center;
 }
 
 .Card {
-  background: whitesmoke;
-  width: 40%;
-  height: 20%;
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 40%;
+  height: fit-content;
+  background: whitesmoke;
   border-radius: 25px;
   padding: 2%;
   box-shadow: 10px 10px;
 }
 
+.Heading {
+  display: flex;
+  align-items: center;
+  height: fit-content;
+}
+
 button {
-  position: relative;
-  outline: none;
-  text-decoration: none;
-  border-radius: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 50px;
+  width: 200px;
+  opacity: 1;
+  outline: none;
+  border-radius: 15px;
   cursor: pointer;
   text-transform: uppercase;
-  height: 200px;
-  width: 210px;
-  opacity: 1;
   background-color: #ffffff;
-  border: 1px solid rgba(22, 76, 167, 0.6);
+  border: 2px solid rgb(0, 0, 0);
+  margin-top: 30px;
 }
 
 span {
-  color: #164ca7;
+  color: #000000;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0.7px;
 }
 

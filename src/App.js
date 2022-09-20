@@ -17,7 +17,7 @@ class App extends React.Component {
 	fetchQuote = () => {
 		axios.get('https://animechan.vercel.app/api/random')
 			.then((response) => {
-				const {quote} = response;
+				const {quote} = response.data;
 				console.log(response.data);
 				this.setState({quote});
 			})
@@ -31,10 +31,10 @@ class App extends React.Component {
 			<div className="App">
 				<div className="Card">
 					<h1 className='Heading'>{this.state.quote}</h1>
-					<button className="Button" onClick={this.fetchQuote}>
-						<span>Random Quote</span>
-					</button>
 				</div>
+				<button className="Button" onClick={this.fetchQuote}>
+						<span>Random Quote</span>
+				</button>
 			</div>
 		);
 	}
