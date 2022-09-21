@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,500;0,700;0,800;0,900;1,500&display=swap');
+
 #root, html, body {
   margin: 0;
   padding: 0;
@@ -18,21 +21,27 @@
 }
 
 .Card {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 40%;
-  height: fit-content;
-  background: whitesmoke;
-  border-radius: 25px;
-  padding: 2%;
-  box-shadow: 10px 10px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	max-width: 30%;
+	height: fit-content;
+	background: whitesmoke;
+	border: solid 4px #000;
+	border-radius: 15px;
+	box-shadow: 
+		15px 15px 0 -4px whitesmoke,
+		15px 15px #000;
+	padding: 5%;
 }
 
 .Heading {
   display: flex;
   align-items: center;
   height: fit-content;
+  font-family: 'Dosis', sans-serif;
+  font-size: large;
+  -webkit-font-smoothing: antialiased;
 }
 
 button {
@@ -40,34 +49,65 @@ button {
   justify-content: center;
   align-items: center;
   height: 50px;
-  width: 200px;
+  width: 150px;
   opacity: 1;
   outline: none;
   border-radius: 15px;
   cursor: pointer;
   text-transform: uppercase;
   background-color: #ffffff;
-  border: 2px solid rgb(0, 0, 0);
+  border: 3px solid rgb(0, 0, 0);
   margin-top: 30px;
+  overflow: hidden
 }
 
 span {
-  color: #000000;
-  font-size: 12px;
-  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: small;
+  font-weight: 900;
   letter-spacing: 0.7px;
+  color: #000000;
 }
 
 button:hover {
-  animation: rotate 0.7s ease-in-out both;
+	background-color: orange;
 }
 
-button:hover span{
+button:before {
+	content: '';
+	position: absolute;
+	background-color: orange;
+	left: var(--x);
+	top: var(--y);
+	transform: translate(-50,-50);
+	height: 0px;
+	width: 0px;
+	border-radius: 50%;
+	transition: all 0.5s linear; 
+}
+
+button:hover::before {
+	height: 350px;
+	width: 350px;
+}
+
+button::after {
+	position: relative;
+	z-index: 1;
+}
+
+
+/* button:hover {
+  animation: rotate 0.7s ease-in-out both;
+} */
+
+/* button:hover span{
   animation: storm 0.7s ease-in-out both;
   animation-delay: 0.06s;
-}
+} */
 
-@keyframes rotate {
+/* @keyframes rotate {
   0% {
     transform: rotate(0deg) translate3d(0, 0, 0);
   }
@@ -83,9 +123,9 @@ button:hover span{
   100% {
     transform: rotate(0deg) translate3d(0, 0, 0);
   }
-}
+} */
 
-@keyframes storm {
+/* @keyframes storm {
   0% {
     transform: translate3d(0, 0, 0) translateZ(0);
   }
@@ -101,7 +141,7 @@ button:hover span{
   100% {
     transform: translate3d(0, 0, 0) translateZ(0);
   }
-}  
+}   */
   
 @media only screen and (max-width: 600px) {
   .card {
