@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 import React, { useEffect } from "react";
+import MovingText from 'react-moving-text';
 
 // USE 'npm start' TO LOAD REACT PAGE
 
@@ -29,8 +30,21 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
+				<div className= "Header">
+					<MovingText 
+						className= "Title"
+						type= "popIn"
+						duration= "1800ms"
+						delay= "0s"
+						direction= "normal"
+						timing= "ease-in"
+						iteration= "1"
+						fillMode= "none">
+						.aniQuote
+					</MovingText>
+				</div>
 				<div className="Card">
-					<h1 className='Heading'>{this.state.quote}</h1>
+					<h1 className="Quote">{this.state.quote}</h1>
 				</div>
 				<button className="Button" onClick={this.fetchQuote}>
 						<span>Random Quote</span>

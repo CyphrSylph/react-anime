@@ -20,6 +20,21 @@
   background-position: center;
 }
 
+.Header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: auto;
+	width: auto;
+}
+
+.Title {
+	font-family: 'Nunito', sans-serif;
+	font-size: 45px;
+	font-weight: 800;
+}
+
 .Card {
 	display: flex;
 	align-items: center;
@@ -35,7 +50,7 @@
 	padding: 5%;
 }
 
-.Heading {
+.Quote {
   display: flex;
   align-items: center;
   height: fit-content;
@@ -46,102 +61,43 @@
 
 button {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   height: 50px;
   width: 150px;
-  opacity: 1;
-  outline: none;
   border-radius: 15px;
-  cursor: pointer;
   text-transform: uppercase;
-  background-color: #ffffff;
-  border: 3px solid rgb(0, 0, 0);
+  background-color: #000;
+  border: 3px solid whitesmoke;
   margin-top: 30px;
-  overflow: hidden
+  overflow: hidden;
 }
 
+/* BUTTON TEXT */
 span {
   font-family: 'Nunito', sans-serif;
   -webkit-font-smoothing: antialiased;
   font-size: small;
   font-weight: 900;
   letter-spacing: 0.7px;
-  color: #000000;
+  color: whitesmoke;
 }
 
-button:hover {
-	background-color: orange;
-}
-
-button:before {
+/* BUTTON HOVER ANIMATIONS  */
+button::before {
 	content: '';
 	position: absolute;
-	background-color: orange;
-	left: var(--x);
-	top: var(--y);
-	transform: translate(-50,-50);
-	height: 0px;
-	width: 0px;
-	border-radius: 50%;
-	transition: all 0.5s linear; 
+	background: whitesmoke;
+	left: -10px;
+	width: 10px;
+	top: 0;
+	bottom: 0;
 }
-
 button:hover::before {
-	height: 350px;
-	width: 350px;
+	left: calc(100% + 10px);
+	transition: left 500ms;
 }
-
-button::after {
-	position: relative;
-	z-index: 1;
-}
-
-
-/* button:hover {
-  animation: rotate 0.7s ease-in-out both;
-} */
-
-/* button:hover span{
-  animation: storm 0.7s ease-in-out both;
-  animation-delay: 0.06s;
-} */
-
-/* @keyframes rotate {
-  0% {
-    transform: rotate(0deg) translate3d(0, 0, 0);
-  }
-  25% {
-    transform: rotate(3deg) translate3d(0, 0, 0);
-  }
-  50% {
-    transform: rotate(-3deg) translate3d(0, 0, 0);
-  }
-  75% {
-    transform: rotate(1deg) translate3d(0, 0, 0);
-  }
-  100% {
-    transform: rotate(0deg) translate3d(0, 0, 0);
-  }
-} */
-
-/* @keyframes storm {
-  0% {
-    transform: translate3d(0, 0, 0) translateZ(0);
-  }
-  25% {
-    transform: translate3d(4px, 0, 0) translateZ(0);
-  }
-  50% {
-    transform: translate3d(-3px, 0, 0) translateZ(0);
-  }
-  75% {
-    transform: translate3d(2px, 0, 0) translateZ(0);
-  }
-  100% {
-    transform: translate3d(0, 0, 0) translateZ(0);
-  }
-}   */
   
 @media only screen and (max-width: 600px) {
   .card {
