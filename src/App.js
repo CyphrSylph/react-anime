@@ -5,28 +5,41 @@ import React, { useEffect } from "react";
 import MovingText from 'react-moving-text';
 
 // USE 'npm start' TO LOAD REACT PAGE
-
 class App extends React.Component {
-	state = {
-		quote: '',
+	
+	constructor(props) {
+		// THE KEYWORD super IS USED TO CALL THE CONSTRUCTOR OF ITS PARENT CLASS, ALLOWING ACCESS ACCESS TO IT'S VARIABLES
+		// THE KEYWORD props [PROPERTIES] IS USED TO PASS READ-ONLY DATA FROM ONE COMPONENT TO ANOTHER	
+		super(props);
+		this.state = {
+			// RESEARCH STATE IN REFERENCE TO DISPLAYING & FILTERING FETCH DATA 
+			quote: ''
+		};
 	}
 
+	// THE FUNCTION componentDidMount WILL RENDER TWICE IN DEV MODE TO AVOID CLIENT MISMATCH WARNINGS
 	componentDidMount() {
 		this.fetchQuote();
 	}
 
+	// FETCH DATA FROM API VIA axios.get
 	fetchQuote = () => {
 		axios.get('https://animechan.vercel.app/api/random')
 			.then((response) => {
-				const {quote} = response.data;
+				const {randoQuote} =response.data;
 				console.log(response.data);
-				this.setState({quote});
+				// console.log(response.data.quote);
+				// console.log(response.data.character);
+				// console.log(response.data.anime);
+				this.setState({randoQuote});
+				
 			})
 			.catch((error) => {
-				console.lot(error);
+				console.log(error);
 			});
 	}
 
+	// RENDER FORMAT OF THE HTML TREE
 	render() {
 		return (
 			<div className="App">
@@ -44,7 +57,13 @@ class App extends React.Component {
 					</MovingText>
 				</div>
 				<div className="Card">
-					<h1 className="Quote">{this.state.quote}</h1>
+					<h1 className="Quote">
+						"{this.state.quote}"
+					</h1>
+					<h5 className="Anime">
+						{this.state.character}, 
+						{this.state.anime}
+					</h5>
 				</div>
 				<button className="Button" onClick={this.fetchQuote}>
 						<span>Random Quote</span>
