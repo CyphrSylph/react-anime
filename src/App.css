@@ -15,7 +15,7 @@
 	align-items: center;
 	text-align: center;
 	height: 100vh;
-	background-image: url('./img/ep_naturalwhite.webp');
+	background-image: url('./assets/ep_naturalwhite.webp');
 	background-repeat: repeat;
 	background-position: center;
 }
@@ -64,7 +64,7 @@
 	align-items: center;
 	height: fit-content;
 	font-family: 'Dosis', sans-serif;
-	font-size: large;
+	font-size: small;
 	-webkit-font-smoothing: antialiased;
 }
 

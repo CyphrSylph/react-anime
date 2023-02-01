@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 import React, { useEffect } from "react";
@@ -11,10 +10,9 @@ class App extends React.Component {
 		// THE KEYWORD super IS USED TO CALL THE CONSTRUCTOR OF ITS PARENT CLASS, ALLOWING ACCESS ACCESS TO IT'S VARIABLES
 		// THE KEYWORD props [PROPERTIES] IS USED TO PASS READ-ONLY DATA FROM ONE COMPONENT TO ANOTHER	
 		super(props);
-		this.state = {
-			// RESEARCH STATE IN REFERENCE TO DISPLAYING & FILTERING FETCH DATA 
-			quote: ''
-		};
+		this.state = {quote: ''};
+		this.state = {character: ''};
+		this.state = {anime: ''};
 	}
 
 	// THE FUNCTION componentDidMount WILL RENDER TWICE IN DEV MODE TO AVOID CLIENT MISMATCH WARNINGS
@@ -26,13 +24,16 @@ class App extends React.Component {
 	fetchQuote = () => {
 		axios.get('https://animechan.vercel.app/api/random')
 			.then((response) => {
-				const {randoQuote} =response.data;
+				const {quote} =response.data.quote;
+				const {character} = response.data.character;
+				const {anime} = response.data.anime;
 				console.log(response.data);
 				// console.log(response.data.quote);
 				// console.log(response.data.character);
 				// console.log(response.data.anime);
-				this.setState({randoQuote});
-				
+				this.setState({quote});
+				this.setState({character});
+				this.setState({anime});	
 			})
 			.catch((error) => {
 				console.log(error);
@@ -62,7 +63,7 @@ class App extends React.Component {
 					</h1>
 					<h5 className="Anime">
 						{this.state.character}, 
-						{this.state.anime}
+						<i>{this.state.anime}</i>
 					</h5>
 				</div>
 				<button className="Button" onClick={this.fetchQuote}>
