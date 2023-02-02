@@ -1,116 +1,180 @@
-@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,500;0,700;0,800;0,900;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@500;600;700&display=swap');
 
-#root, html, body {
-	margin: 0;
-	padding: 0;
-	height: 100vh;
-	box-sizing: border-box;
+:root {
+	--header-height: 3rem;
+	--hue: 0;
+	--sat: 0;
+	--title-color: hsl(var(--hue), var(--sat), 20%);
+	--title-color-dark: hsl(0, 0%, 9%);
+    --text-color: hsl(var(--hue), var(--sat), 46%);
+    --body-color: hsl(var(--hue), var(--sat), 98%);
+    --container-color: #fff;
+	--body-font: "Nunito", sans-serif;
+	--title-font: "Dosis", sans-serif;
+    --big-font-size: 3.5rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
+    --smallest-font-size: 0.625rem;
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+	--mb-0-25: .25rem;
+    --mb-0-5: 0.5rem;
+    --mb-0-75: 0.75rem;
+    --mb-1: 1rem;
+    --mb-1-5: 1.5rem;
+    --mb-2: 2rem;
+    --mb-2-5: 2.5rem;
+    --mb-3: 3rem;
+	--z-tooltip: 10;
+    --z-fixed: 100;
+    --z-modal: 1000;
 }
 
-.App {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	height: 100vh;
-	background-image: url('./assets/ep_naturalwhite.webp');
-	background-repeat: repeat;
-	background-position: center;
+@media screen and (max-width: 992px) {
+    :root {
+        --big-font-size: 2.75rem;
+        --h1-font-size: 1.5rem;
+        --h2-font-size: 1.25rem;
+        --h3-font-size: 1rem;
+        --normal-font-size: 0.938rem;
+        --small-font-size: 0.813rem;
+        --smaller-font-size: 0.75rem;
+        --smallest-font-size: 0.625rem;
+    }
 }
 
-.Header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
-	height: auto;
-	width: auto;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.Title {
-	font-family: 'Nunito', sans-serif;
-	font-size: 45px;
-	font-weight: 800;
+html {
+    scroll-behavior: smooth;
 }
 
-.Card {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	max-width: 30%;
-	height: fit-content;
-	background: whitesmoke;
-	border: solid 4px #000;
-	border-radius: 15px;
-	box-shadow: 
-		15px 15px 0 -4px whitesmoke,
-		15px 15px #000;
-	padding: 5%;
+body, button, input, textarea {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
 }
 
-.Quote {
-	display: flex;
-	align-items: center;
-	height: fit-content;
-	font-family: 'Dosis', sans-serif;
-	font-size: large;
-	-webkit-font-smoothing: antialiased;
+body {
+    background-color: var(--body-color);
+    color: var(--text-color);
 }
 
-.Anime {
-	display: flex;
-	align-items: center;
-	height: fit-content;
-	font-family: 'Dosis', sans-serif;
-	font-size: small;
-	-webkit-font-smoothing: antialiased;
+h1, h2, h3 {
+    color: var(--title-color);
+    font-weight: var(--font-semibold);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
 }
 
 button {
-	display: flex;
-	position: relative;
-	justify-content: center;
-	align-items: center;
-	height: 50px;
-	width: 150px;
-	border-radius: 15px;
-	text-transform: uppercase;
-	background-color: #000;
-	border: 3px solid whitesmoke;
-	margin-top: 30px;
-	overflow: hidden;
+    cursor: pointer;
+    border: none;
+    outline: none;
 }
 
-/* BUTTON TEXT */
-span {
-	font-family: 'Nunito', sans-serif;
-	-webkit-font-smoothing: antialiased;
-	font-size: small;
-	font-weight: 900;
-	letter-spacing: 0.7px;
-	color: whitesmoke;
+img {
+    max-width: 100%;
+    height: auto;
 }
 
-/* BUTTON HOVER ANIMATIONS  */
-button::before {
-	content: '';
-	position: absolute;
-	background: whitesmoke;
-	left: -10px;
-	width: 10px;
-	top: 0;
-	bottom: 0;
+.section {
+    padding: 6rem 0 2rem;
 }
-button:hover::before {
-	left: calc(100% + 10px);
-	transition: left 500ms;
+.section__subtitle {
+    display: block;
+    font-size: var(--small-font-size);
+    margin-bottom: 4rem;
 }
-  
-@media only screen and (max-width: 600px) {
-	.card {
-		width: 80%;
-		height: 30%;
-	}
+.section__title, .section__subtitle {
+    text-align: center;
+}
+
+.container {
+    max-width: 968px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.button {
+    display: inline-block;
+    background-color: var(--title-color);
+    color: var(--container-color);
+    padding: 1.25rem 2rem;
+    border-radius: 1rem;
+    font-weight: var(--font-medium);
+}
+.button:hover {
+    background-color: var(--title-color-dark);
+}
+.button__icon {
+    margin-left: var(--mb-0-5);
+}
+.button--flex {
+    display: inline-flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 992px) {
+    .container {
+        margin-left: var(--mb-1-5);
+        margin-right: var(--mb-1-5);
+    }
+
+    .button {
+        padding: 1rem 1.75rem;
+    }
+    .button__icon {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        margin: 00 var(--header-height) 0;
+    }
+	
+    .section {
+        padding: 2rem 0 4rem;
+    }
+    .section__subtitle {
+        margin-bottom: var(--mb-3);
+    }
+}
+
+@media screen and (max-width: 576px) {
+}
+
+@media screen and (max-width: 350px) {
+    :root {
+    --big-font-size: 2.25rem;
+    }
+
+    .container {
+        margin-left: var(--mb-1);
+        margin-right: var(--mb-1);
+    }
+
 }
