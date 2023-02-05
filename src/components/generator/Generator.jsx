@@ -20,13 +20,13 @@ const Generator = () => {
 			</span>
 			<div className="generator__container container">
 				<div className="generator__tabs">
-					<div className={toggleState === 1 ? "generator__button button--flex generator__active" 
-						: "generator__button button--flex"} onClick={() => toggleGen(1)}>
+					<div className={toggleState === 1 ? "button button--flex generator__active" 
+						: "button button--flex"} onClick={() => toggleGen(1)}>
 						<IoDiceOutline className="generator__icon" />
 						Random
 					</div>
-					<div className={toggleState === 2 ? "generator__button button--flex generator__active" 
-						: "generator__button button--flex"} onClick={() => toggleGen(2)}>
+					<div className={toggleState === 2 ? "button button--flex generator__active" 
+						: "button button--flex"} onClick={() => toggleGen(2)}>
 						<HiOutlineStar className="generator__icon" />
 						Specific
 					</div>
